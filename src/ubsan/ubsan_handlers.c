@@ -75,6 +75,29 @@ void __ubsan_handle_type_mismatch_v1_abort(void *data_raw, void *pointer) {
     __ubsan_handle_type_mismatch_v1(data_raw, pointer);
 }
 
+void __ubsan_handle_function_type_mismatch(void *data_raw, void *function) {
+    __ubsan_function_type_mismatch_data *data = data_raw;
+    (void)function;
+
+    drt_spin_lock(&ubsan_lock);
+    drt_printf("\n==UBSAN: function type mismatch==\n  Location: ");
+    ubsan_print_location(&data->location);
+    drt_puts("\n  Type: ");
+    ubsan_print_type(data->type);
+    drt_puts("\n");
+
+    drt_stack_trace_t st;
+    drt_arch_capture_stack_trace(&st, 2);
+    drt_print_stack_trace(&st);
+    drt_spin_unlock(&ubsan_lock);
+    drt_arch_abort();
+    __builtin_unreachable();
+}
+
+void __ubsan_handle_function_type_mismatch_abort(void *data_raw, void *function) {
+    __ubsan_handle_function_type_mismatch(data_raw, function);
+}
+
 void __ubsan_handle_add_overflow(void *data_raw, void *lhs, void *rhs) {
     __ubsan_overflow_data *data = data_raw;
     (void)lhs; (void)rhs;

@@ -83,6 +83,13 @@ typedef struct {
     __ubsan_source_location *location;
 } __ubsan_pointer_overflow_data;
 
+typedef struct {
+    __ubsan_source_location location;
+    __ubsan_type_descriptor *type;
+} __ubsan_function_type_mismatch_data;
+
+void __ubsan_handle_function_type_mismatch(void *data_raw, void *function);
+void __ubsan_handle_function_type_mismatch_abort(void *data_raw, void *function);
 void __ubsan_handle_type_mismatch(void *data, void *pointer);
 void __ubsan_handle_type_mismatch_v1(void *data, void *pointer);
 void __ubsan_handle_add_overflow(void *data, void *lhs, void *rhs);
