@@ -21,7 +21,7 @@
 #define ASAN_SHADOW_GLOBAL_REDZONE 0xF9
 #define ASAN_SHADOW_POISONED      0xFF
 
-static volatile int asan_initialized = 0;
+volatile int asan_initialized = 0;
 static drt_spinlock_t asan_lock = MISAN_SPINLOCK_INIT;
 
 #define ASAN_FAKE_STACK_SIZE  (64 * 1024)
@@ -99,7 +99,7 @@ static void asan_report_error(const char *kind, void *addr, size_t size,
     __builtin_unreachable();
 }
 
-static void asan_check_access(void *addr, size_t size, int is_write) {
+void asan_check_access(void *addr, size_t size, int is_write) {
     if (!asan_initialized) return;
     uintptr_t a = (uintptr_t)addr;
     uintptr_t grain = a & ~ASAN_SHADOW_MASK;
