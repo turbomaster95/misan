@@ -52,3 +52,29 @@ void* __asan_memset(void *s, int c, size_t n) {
 
 void __asan_register_elf_globals(void *flag, void *start, void *end) {}
 void __asan_unregister_elf_globals(void *flag, void *start, void *end) {}
+
+int __asan_option_detect_stack_use_after_return = 0;
+
+void *__asan_stack_malloc_0(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_1(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_2(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_3(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_4(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_5(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_6(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_7(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_8(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_9(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+void *__asan_stack_malloc_10(size_t size, void *addr) { (void)size; (void)addr; return NULL; }
+
+void __asan_stack_free_0(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_1(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_2(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_3(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_4(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_5(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_6(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_7(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_8(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_9(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }
+void __asan_stack_free_10(void *ptr, size_t size, void *addr) { (void)ptr; (void)size; (void)addr; }

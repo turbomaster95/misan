@@ -88,6 +88,12 @@ typedef struct {
     __ubsan_type_descriptor *type;
 } __ubsan_function_type_mismatch_data;
 
+typedef struct {
+    __ubsan_source_location location;
+    __ubsan_type_descriptor *from_type;
+    __ubsan_type_descriptor *to_type;
+} __ubsan_float_cast_overflow_data;
+
 void __ubsan_handle_function_type_mismatch(void *data_raw, void *function);
 void __ubsan_handle_function_type_mismatch_abort(void *data_raw, void *function);
 void __ubsan_handle_type_mismatch(void *data, void *pointer);
@@ -123,6 +129,9 @@ void __ubsan_handle_nonnull_arg_abort(void *data);
 void __ubsan_handle_implicit_conversion_abort(void *data, void *from, void *to);
 void __ubsan_handle_pointer_overflow_abort(void *data, void *base, void *result);
 void __ubsan_handle_builtin_unreachable_abort(void *data);
+
+void __ubsan_handle_float_cast_overflow(void *data_raw, void *from_raw);
+void __ubsan_handle_float_cast_overflow_abort(void *data_raw, void *from_raw);
 
 #ifdef __cplusplus
 }

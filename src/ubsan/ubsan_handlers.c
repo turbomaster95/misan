@@ -71,6 +71,23 @@ void __ubsan_handle_type_mismatch_v1(void *data_raw, void *pointer) {
     ubsan_print_type(data->type);
 }
 
+void __ubsan_handle_float_cast_overflow(void *data_raw, void *from_raw) {
+    __ubsan_float_cast_overflow_data *data = ( __ubsan_float_cast_overflow_data *)data_raw;
+    (void)from_raw;
+
+    ubsan_print_location(&data->location);
+    drt_puts("float cast overflow: From type: ");
+    ubsan_print_type(data->from_type);
+    drt_puts(" To type: ");
+    ubsan_print_type(data->to_type);
+    drt_puts("\n");
+}
+
+void __ubsan_handle_float_cast_overflow_abort(void *data_raw, void *from_raw) {
+    __ubsan_handle_float_cast_overflow(data_raw, from_raw);
+    drt_arch_abort();
+}
+
 void __ubsan_handle_type_mismatch_v1_abort(void *data_raw, void *pointer) {
     __ubsan_handle_type_mismatch_v1(data_raw, pointer);
 }

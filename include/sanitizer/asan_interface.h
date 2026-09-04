@@ -35,19 +35,32 @@ void __asan_unregister_globals(__asan_global *globals, size_t n);
 void __asan_init(void);
 void __asan_version_mismatch_check_v8(void);
 
-void *__asan_stack_malloc_0(size_t size);
-void *__asan_stack_malloc_1(size_t size);
-void *__asan_stack_malloc_2(size_t size);
-void *__asan_stack_malloc_3(size_t size);
-void *__asan_stack_malloc_4(size_t size);
-void *__asan_stack_malloc_5(size_t size);
+// Variable for stack use-after-return detection
+extern int __asan_option_detect_stack_use_after_return;
 
-void __asan_stack_free_0(void *ptr, size_t size);
-void __asan_stack_free_1(void *ptr, size_t size);
-void __asan_stack_free_2(void *ptr, size_t size);
-void __asan_stack_free_3(void *ptr, size_t size);
-void __asan_stack_free_4(void *ptr, size_t size);
-void __asan_stack_free_5(void *ptr, size_t size);
+void *__asan_stack_malloc_0(size_t size, void *addr);
+void *__asan_stack_malloc_1(size_t size, void *addr);
+void *__asan_stack_malloc_2(size_t size, void *addr);
+void *__asan_stack_malloc_3(size_t size, void *addr);
+void *__asan_stack_malloc_4(size_t size, void *addr);
+void *__asan_stack_malloc_5(size_t size, void *addr);
+void *__asan_stack_malloc_6(size_t size, void *addr);
+void *__asan_stack_malloc_7(size_t size, void *addr);
+void *__asan_stack_malloc_8(size_t size, void *addr);
+void *__asan_stack_malloc_9(size_t size, void *addr);
+void *__asan_stack_malloc_10(size_t size, void *addr);
+
+void __asan_stack_free_0(void *ptr, size_t size, void *addr);
+void __asan_stack_free_1(void *ptr, size_t size, void *addr);
+void __asan_stack_free_2(void *ptr, size_t size, void *addr);
+void __asan_stack_free_3(void *ptr, size_t size, void *addr);
+void __asan_stack_free_4(void *ptr, size_t size, void *addr);
+void __asan_stack_free_5(void *ptr, size_t size, void *addr);
+void __asan_stack_free_6(void *ptr, size_t size, void *addr);
+void __asan_stack_free_7(void *ptr, size_t size, void *addr);
+void __asan_stack_free_8(void *ptr, size_t size, void *addr);
+void __asan_stack_free_9(void *ptr, size_t size, void *addr);
+void __asan_stack_free_10(void *ptr, size_t size, void *addr);
 
 void __asan_before_dynamic_init(const char *module_name);
 void __asan_after_dynamic_init(void);
