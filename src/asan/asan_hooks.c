@@ -40,11 +40,14 @@ void __asan_store4(void *addr)  { if (asan_initialized) asan_check_access(addr, 
 void __asan_store8(void *addr)  { if (asan_initialized) asan_check_access(addr, 8, 1); }
 void __asan_store16(void *addr) { if (asan_initialized) asan_check_access(addr, 16, 1); }
 
-void *__asan_memcpy(void *dest, const void *src, size_t n) {
-    return drt_memcpy(dest, src, n);
+void* __asan_memcpy(void *dest, const void *src, size_t n) {
+    drt_memcpy(dest, src, n);
+    return dest;
 }
-void *__asan_memset(void *s, int c, size_t n) {
-    return drt_memset(s, c, n);
+
+void* __asan_memset(void *s, int c, size_t n) {
+    drt_memset(s, c, n);
+    return s;
 }
 
 void __asan_register_elf_globals(void *flag, void *start, void *end) {}
