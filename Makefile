@@ -14,7 +14,7 @@ INCDIR  ?= $(PREFIX)/include/misan
 CFLAGS_BASE = -std=c11 -O2 -g -ffreestanding -nostdlib -nostdinc \
               -fno-builtin -fno-stack-protector -fno-asynchronous-unwind-tables \
               -Wall -Wextra -fPIC -Wno-unused -Wno-array-bounds \
-              -I$(PWD)/include -isystem $(shell $(CC) -print-file-name=include)
+              -Iinclude -isystem $(shell $(CC) -print-file-name=include)
 
 CFLAGS_ASAN  = $(CFLAGS_BASE) -DASAN_ENABLED=1
 CFLAGS_UBSAN = $(CFLAGS_BASE) -DUBSAN_ENABLED=1
